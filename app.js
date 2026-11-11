@@ -13,6 +13,16 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;'
 const uid = () => (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2));
 const fmt = n => Number(n).toLocaleString();
 
+// Owner mode: open the site once with #edit on the end of the link
+// (for example https://yourname.github.io/limited-values/#edit).
+// This browser then remembers you. Visitors never see the edit button.
+const OWNER = (() => {
+  try {
+    if (location.hash === '#edit') localStorage.setItem('limited-values-owner', '1');
+    return localStorage.getItem('limited-values-owner') === '1';
+  } catch (e) { return location.hash === '#edit'; }
+})();
+
 const FALLBACK = {
   settings: { game: 'My game', currency: 'Coins' },
   items: [
@@ -117,9 +127,9 @@ function render() {
   $('#list').innerHTML = list.length
     ? list.map(i => rowHTML(i, draft.settings.currency)).join('')
     : `<p class="state"><strong>${draft.items.length ? 'No matches' : 'No limiteds yet'}</strong><br>${
-        draft.items.length ? 'Try a different name.' : 'Choose Edit values, then add your first limited.'}</p>`;
+        draft.items.length ? 'Try a different name.' : (OWNER ? 'Choose Edit values, then add your first limited.' : 'Check back soon.')}</p>`;
 
-  $('#samplesNote').hidden = !draft.items.some(i => i.sample);
+  $('#samplesNote').hidden = !OWNER || !draft.items.some(i => i.sample);
   $('#savebar').hidden = !isDirty();
 }
 
@@ -309,6 +319,7 @@ function syncSettings() {
 /* ---------- start ---------- */
 
 (async function init() {
+  if (OWNER) $('#editToggle').hidden = false;
   fillSelects();
   saved = await load();
   draft = clone(saved);
