@@ -1,10 +1,152 @@
 {
-  "settings": { "game": "My game", "currency": "Coins" },
+  "settings": {
+    "game": "My game",
+    "currency": "Coins"
+  },
   "items": [
-    { "id": "s1", "name": "Sample Crown", "value": 12500, "demand": 4, "trend": "Rising", "copies": 85, "note": "Sample item", "image": "", "added": 5, "sample": true },
-    { "id": "s2", "name": "Sample Wings", "value": 4800, "demand": 3, "trend": "Stable", "copies": 410, "note": "Sample item", "image": "", "added": 4, "sample": true },
-    { "id": "s3", "name": "Sample Mask", "value": 950, "demand": 2, "trend": "Falling", "copies": 2300, "note": "Sample item", "image": "", "added": 3, "sample": true },
-    { "id": "s4", "name": "Sample Halo", "value": 31000, "demand": 4, "trend": "Rising", "copies": 22, "note": "Sample item", "image": "", "added": 2, "sample": true },
-    { "id": "s5", "name": "Sample Scarf", "value": 120, "demand": 0, "trend": "Falling", "copies": 9800, "note": "Sample item", "image": "", "added": 1, "sample": true }
+    {
+      "id": "i1",
+      "name": "Blackvalk",
+      "value": 14000,
+      "demand": 2,
+      "trend": "Stable",
+      "copies": 0,
+      "note": "",
+      "image": "",
+      "added": 1,
+      "sample": false
+    },
+    {
+      "id": "i2",
+      "name": "Red Glowing Eyes",
+      "value": 8400,
+      "demand": 2,
+      "trend": "Stable",
+      "copies": 0,
+      "note": "",
+      "image": "",
+      "added": 2,
+      "sample": false
+    },
+    {
+      "id": "i3",
+      "name": "Red Tango",
+      "value": 8300,
+      "demand": 2,
+      "trend": "Stable",
+      "copies": 0,
+      "note": "",
+      "image": "",
+      "added": 3,
+      "sample": false
+    },
+    {
+      "id": "i4",
+      "name": "Red Void Star",
+      "value": 5500,
+      "demand": 2,
+      "trend": "Stable",
+      "copies": 0,
+      "note": "",
+      "image": "",
+      "added": 4,
+      "sample": false
+    },
+    {
+      "id": "i5",
+      "name": "Fiery Horns of the Netherworld",
+      "value": 4200,
+      "demand": 2,
+      "trend": "Stable",
+      "copies": 0,
+      "note": "",
+      "image": "",
+      "added": 5,
+      "sample": false
+    },
+    {
+      "id": "i6",
+      "name": "Black Iron King of the Night",
+      "value": 4000,
+      "demand": 2,
+      "trend": "Stable",
+      "copies": 0,
+      "note": "",
+      "image": "",
+      "added": 6,
+      "sample": false
+    },
+    {
+      "id": "i7",
+      "name": "): Green Sidewinder",
+      "value": 2800,
+      "demand": 2,
+      "trend": "Stable",
+      "copies": 0,
+      "note": "",
+      "image": "",
+      "added": 7,
+      "sample": false
+    },
+    {
+      "id": "i8",
+      "name": ":( Front Stand",
+      "value": 1800,
+      "demand": 2,
+      "trend": "Stable",
+      "copies": 0,
+      "note": "",
+      "image": "",
+      "added": 8,
+      "sample": false
+    },
+    {
+      "id": "i9",
+      "name": "Pink Sparkle Time Fedora",
+      "value": 25500,
+      "demand": 2,
+      "trend": "Stable",
+      "copies": 0,
+      "note": "",
+      "image": "",
+      "added": 9,
+      "sample": false
+    },
+    {
+      "id": "i10",
+      "name": "Orange Sparkle Time Fedora",
+      "value": 18000,
+      "demand": 2,
+      "trend": "Stable",
+      "copies": 0,
+      "note": "",
+      "image": "",
+      "added": 10,
+      "sample": false
+    },
+    {
+      "id": "i11",
+      "name": "Super Super Happy Face",
+      "value": 3100,
+      "demand": 2,
+      "trend": "Stable",
+      "copies": 0,
+      "note": "",
+      "image": "",
+      "added": 11,
+      "sample": false
+    },
+    {
+      "id": "i12",
+      "name": "Platinum Domino Crown",
+      "value": 4300,
+      "demand": 2,
+      "trend": "Stable",
+      "copies": 0,
+      "note": "",
+      "image": "",
+      "added": 12,
+      "sample": false
+    }
   ]
 }
