@@ -107,9 +107,29 @@
       <button type="button" class="btn ghost" id="exportBtn">Export values.json</button>
       <label class="btn ghost file-btn">Import values.json<input type="file" id="importFile" accept="application/json,.json" hidden></label>
       <button type="button" class="btn ghost" id="resetBtn">Reset to published values</button>
+      <button type="button" class="btn ghost" id="logoutBtn">Lock editing</button>
     </div>
   </section>
 </main>
+
+<footer class="foot">
+  <button type="button" id="ownerLink" class="linklike">Owner login</button>
+</footer>
+
+<dialog id="login" class="login">
+  <form id="loginForm" autocomplete="off">
+    <h2>Owner login</h2>
+    <label class="field">
+      <span>Code</span>
+      <input type="password" id="loginCode" required autocomplete="off">
+    </label>
+    <p class="err" id="loginErr" role="alert" hidden>That code is not correct.</p>
+    <div class="actions">
+      <button type="submit" class="btn">Unlock editing</button>
+      <button type="button" class="btn ghost" id="loginCancel">Cancel</button>
+    </div>
+  </form>
+</dialog>
 
 <div id="savebar" class="savebar" role="status" hidden>
   <p>You have unsaved changes.</p>
