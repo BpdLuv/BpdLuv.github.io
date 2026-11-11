@@ -13,17 +13,11 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;'
 const uid = () => (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2));
 const fmt = n => Number(n).toLocaleString();
 
-// Owner login. Only a hash of the code is stored here, not the code itself.
-// This is a convenience lock, not real security: see the note in the chat.
-const SALT = 'limited-values:';
-const CODE_HASH = '6a9e6e2ed01bad81cdbc33305bf4c0a3f4ac5593e3903e4063fbe934e7998767';
+// Owner mode: open the site once with #edit on the end of the link
+// (for example https://yourname.github.io/limited-values/#edit).
+// That browser then remembers you. Visitors never see the edit button.
 const OWNER_KEY = 'limited-values-owner';
 let OWNER = false;
-
-async function sha(text) {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(SALT + text));
-  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
-}
 
 const FALLBACK = {
   settings: { game: 'My game', currency: 'Coins' },
@@ -318,50 +312,24 @@ function syncSettings() {
   $('#setCurrency').value = draft.settings.currency;
 }
 
-/* ---------- owner login ---------- */
+/* ---------- owner mode ---------- */
 
 function applyOwner() {
   $('#editToggle').hidden = !OWNER;
-  $('#ownerLink').hidden = OWNER;
   $('#logoutBtn').hidden = !OWNER;
   if (!OWNER && document.body.classList.contains('editing')) $('#editToggle').click();
 }
 
-function openLogin() {
-  $('#loginErr').hidden = true;
-  $('#loginCode').value = '';
-  $('#login').showModal();
-  $('#loginCode').focus();
-}
-
 async function restoreOwner() {
-  try { OWNER = localStorage.getItem(OWNER_KEY) === CODE_HASH; } catch (e) { OWNER = false; }
+  try {
+    if (location.hash === '#edit') localStorage.setItem(OWNER_KEY, '1');
+    OWNER = localStorage.getItem(OWNER_KEY) === '1';
+  } catch (e) {
+    OWNER = location.hash === '#edit';
+  }
   applyOwner();
-  if (location.hash === '#edit' && !OWNER) openLogin();
 }
 
-$('#ownerLink').addEventListener('click', openLogin);
-$('#loginCancel').addEventListener('click', () => $('#login').close());
-$('#loginForm').addEventListener('submit', async e => {
-  e.preventDefault();
-  if (!(window.crypto && crypto.subtle)) {
-    $('#loginErr').textContent = 'Login needs a secure page. Open the site from its https address.';
-    $('#loginErr').hidden = false;
-    return;
-  }
-  const h = await sha($('#loginCode').value);
-  if (h === CODE_HASH) {
-    try { localStorage.setItem(OWNER_KEY, h); } catch (err) { /* stays unlocked for this visit */ }
-    OWNER = true;
-    $('#login').close();
-    applyOwner();
-    render();
-  } else {
-    $('#loginErr').textContent = 'That code is not correct.';
-    $('#loginErr').hidden = false;
-    $('#loginCode').select();
-  }
-});
 $('#logoutBtn').addEventListener('click', () => {
   try { localStorage.removeItem(OWNER_KEY); } catch (e) { /* ignore */ }
   OWNER = false;

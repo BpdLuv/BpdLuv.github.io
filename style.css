@@ -179,20 +179,3 @@ code{background:var(--accent-soft);padding:0.1rem 0.4rem;border-radius:6px}
 .btn.light{border-color:var(--bg);color:var(--bg);background:transparent}
 .btn.light.solid{background:var(--bg);color:var(--ink)}
 [hidden]{display:none!important}
-
-/* owner login */
-.foot{max-width:68rem;margin:2rem auto 0;padding-inline:1.25rem}
-.linklike{
-  background:none;border:0;padding:0.25rem 0;
-  font:inherit;font-size:0.85rem;color:var(--muted);
-  text-decoration:underline;cursor:pointer;
-}
-.login{
-  border:0;border-radius:20px;padding:1.25rem 1.5rem 1.5rem;
-  background:var(--panel);color:var(--ink);
-  width:min(24rem,calc(100% - 2rem));
-}
-.login::backdrop{background:rgba(10,12,24,0.6)}
-.login h2{margin-top:0.25rem}
-.login .actions{margin-top:1rem}
-.err{color:var(--down);margin:0.6rem 0 0;font-weight:600}
