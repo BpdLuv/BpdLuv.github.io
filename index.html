@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Limited Values</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div>
+    <p class="game" id="gameName"></p>
+    <h1>Limited Values</h1>
+  </div>
+  <button type="button" id="editToggle" class="btn ghost" aria-expanded="false">Edit values</button>
+</header>
+
+<main>
+  <div id="samplesNote" class="notice" hidden>
+    <p>The five items below are samples so you can see the layout. Remove them before you share this page.</p>
+    <button type="button" class="btn small" id="removeSamples">Remove samples</button>
+  </div>
+
+  <section class="tools" aria-label="Search and sort">
+    <label class="field grow">
+      <span>Search</span>
+      <input type="search" id="search" placeholder="Item name">
+    </label>
+    <label class="field">
+      <span>Sort by</span>
+      <select id="sort">
+        <option value="value-desc">Value, high to low</option>
+        <option value="value-asc">Value, low to high</option>
+        <option value="demand">Demand</option>
+        <option value="trend">Trend</option>
+        <option value="copies-asc">Copies, rarest first</option>
+        <option value="name">Name, A to Z</option>
+        <option value="new">Recently added</option>
+      </select>
+    </label>
+  </section>
+
+  <section id="list" aria-live="polite">
+    <p class="state"><strong>Loading values</strong><br>One moment.</p>
+  </section>
+
+  <section id="editor" class="editor" hidden>
+    <h2>Page settings</h2>
+    <div class="form-grid">
+      <label class="field">
+        <span>Game name</span>
+        <input type="text" id="setGame" maxlength="60">
+      </label>
+      <label class="field">
+        <span>Currency label</span>
+        <input type="text" id="setCurrency" maxlength="20">
+      </label>
+    </div>
+
+    <h2 id="formTitle">Add a limited</h2>
+    <form id="itemForm" class="form-grid" autocomplete="off">
+      <label class="field wide">
+        <span>Item name</span>
+        <input type="text" id="fName" required maxlength="80">
+      </label>
+      <label class="field">
+        <span>Value</span>
+        <input type="number" id="fValue" required min="0" step="any" inputmode="decimal">
+      </label>
+      <label class="field">
+        <span>Demand</span>
+        <select id="fDemand"></select>
+      </label>
+      <label class="field">
+        <span>Trend</span>
+        <select id="fTrend"></select>
+      </label>
+      <label class="field">
+        <span>Copies in circulation</span>
+        <input type="number" id="fCopies" min="0" step="1" inputmode="numeric">
+      </label>
+      <label class="field wide">
+        <span>Note (optional)</span>
+        <input type="text" id="fNote" maxlength="140">
+      </label>
+      <div class="field wide">
+        <span>Picture (optional)</span>
+        <div class="pic-row">
+          <div class="thumb" id="picPreview" aria-hidden="true"></div>
+          <input type="file" id="fPic" accept="image/*">
+          <button type="button" class="btn small ghost" id="picClear" hidden>Remove picture</button>
+        </div>
+      </div>
+      <div class="actions wide">
+        <button type="submit" class="btn" id="formSubmit">Add limited</button>
+        <button type="button" class="btn ghost" id="formCancel" hidden>Cancel edit</button>
+      </div>
+    </form>
+
+    <h2>Publish these values</h2>
+    <p class="help">Changes you save stay in this browser only. To show them to everyone, export the file and upload it to your repository as <code>values.json</code>, replacing the old one.</p>
+    <div class="actions">
+      <button type="button" class="btn ghost" id="exportBtn">Export values.json</button>
+      <label class="btn ghost file-btn">Import values.json<input type="file" id="importFile" accept="application/json,.json" hidden></label>
+      <button type="button" class="btn ghost" id="resetBtn">Reset to published values</button>
+    </div>
+  </section>
+</main>
+
+<div id="savebar" class="savebar" role="status" hidden>
+  <p>You have unsaved changes.</p>
+  <div class="actions">
+    <button type="button" class="btn ghost light" id="discardBtn">Discard changes</button>
+    <button type="button" class="btn light solid" id="saveBtn">Save changes</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

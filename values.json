@@ -1,0 +1,10 @@
+{
+  "settings": { "game": "My game", "currency": "Coins" },
+  "items": [
+    { "id": "s1", "name": "Sample Crown", "value": 12500, "demand": 4, "trend": "Rising", "copies": 85, "note": "Sample item", "image": "", "added": 5, "sample": true },
+    { "id": "s2", "name": "Sample Wings", "value": 4800, "demand": 3, "trend": "Stable", "copies": 410, "note": "Sample item", "image": "", "added": 4, "sample": true },
+    { "id": "s3", "name": "Sample Mask", "value": 950, "demand": 2, "trend": "Falling", "copies": 2300, "note": "Sample item", "image": "", "added": 3, "sample": true },
+    { "id": "s4", "name": "Sample Halo", "value": 31000, "demand": 4, "trend": "Rising", "copies": 22, "note": "Sample item", "image": "", "added": 2, "sample": true },
+    { "id": "s5", "name": "Sample Scarf", "value": 120, "demand": 0, "trend": "Falling", "copies": 9800, "note": "Sample item", "image": "", "added": 1, "sample": true }
+  ]
+}
